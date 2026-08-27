@@ -7,7 +7,7 @@ cask "overterm" do
   desc "Agent-aware floating terminal"
   homepage "https://github.com/egeyesss/overterm"
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "OverTerm.app"
 

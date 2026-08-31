@@ -1,6 +1,6 @@
 cask "overterm" do
-  version "1.0.1"
-  sha256 "feb7b8c09cb917216d9ea088e60551647e5bf253efe9b8f926839140412427d8"
+  version "1.0.3"
+  sha256 "28ff4e061e10aa0955c7086d2d20bf6658452762b10ef448a318cdd7c71146f3"
 
   url "https://github.com/egeyesss/overterm/releases/download/v#{version}/oTerm_#{version}_universal.dmg"
   name "OverTerm"
@@ -11,10 +11,12 @@ cask "overterm" do
 
   app "oTerm.app"
 
-  # Removing the app leaves its Claude Code hook entries behind, because
-  # macOS runs none of the app's own code when it goes. This asks it to
-  # clean up first. must_succeed is false so a problem there can never
-  # stop someone uninstalling.
+  # Removing the app leaves what it wrote into other tools' config
+  # behind, because macOS runs none of the app's own code when it goes.
+  # This asks it to clean up first: the Claude Code hook entries and the
+  # Pi extension both go. The flag is still named after the hooks, which
+  # were all it did when it was added. must_succeed is false so a problem
+  # there can never stop someone uninstalling.
   uninstall quit:   "io.github.egeyesilyurt.overterm",
             script: {
               executable:   "#{appdir}/oTerm.app/Contents/MacOS/overterm",
